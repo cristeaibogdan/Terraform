@@ -11,7 +11,7 @@
     3. terraform apply
 
   C. Destroy:
-    Removes all resources in the current config directory
+    terraform destroy <= removes all resources in the current config directory
 */
 resource "local_file" "pet" {
   filename = "root/pets.txt"
