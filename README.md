@@ -15,13 +15,20 @@
 Terraform doesn't store credentials. It reads them from the `AWS CLI configuration` on the local machine. 
 The repo itself never "has access" to AWS.
 
-1. In the AWS Console go to `IAM → Users → Create user`. Do not use the root account.
-   - Attach a policy `AdministratorAccess` so you have access to every service
+1. Activate advanced features (one-time, irreversible)
+   - Without this, IAM user groups and other features are unavailable.
 
-2. Create an access key. Choose `Command Line Interface (CLI)`.
-   - Download the .csv file with the keys
+2. Switch back to the project account
+   - Activation creates an `Identity Delegated Admin` account and may switch you into it. Don't use it.
+   - Open `settings.aws.com` and sign in to the original project account.
 
-3. Configure
+3. In the AWS Console go to `IAM → Users → Create user`. Do not use the root account.
+   - Attach a policy `AdministratorAccess` so you have access to every service.
+
+4. Create an access key. Choose `Command Line Interface (CLI)`.
+   - Download the .csv file with the keys.
+
+5. Configure
 ```bash
   aws configure
 ```
@@ -30,7 +37,7 @@ The repo itself never "has access" to AWS.
    - Default region: `eu-west-1`
    - Default output format: `json`
 
-4. Verify
+6. Verify
 ```bash
   aws sts get-caller-identity
 ```
